@@ -6,7 +6,7 @@ An angular web application built with Angular Modular architecture with authenti
 An angular web application built with Angular Modular architecture with authentication, authorization and authguards feature . Sign up , Login , CRUD operation based on moments has been implemented in this project.
 
 Steps to  start frontend : 
-1) Go inside /assignment-5D directory.
+1) Go inside /frontend/assignment-5D directory.
 2) Install node modules using -  npm install
 2) Run  -  ng serve 
 
