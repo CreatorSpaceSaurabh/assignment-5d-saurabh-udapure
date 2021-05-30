@@ -1,0 +1,312 @@
+swagger: "2.0"
+info:
+  version: "0.0.1"
+  title: Hello World App
+# during dev, should point to your local machine
+host: localhost:9596
+# basePath prefixes all resource paths
+basePath: /api
+#
+schemes:
+  # tip: remove http to make production-grade
+  - http
+  # - https
+# format of bodies a client can send (Content-Type)
+consumes:
+  - application/json
+# format of the responses to the client (Accepts)
+produces:
+  - application/json
+paths:
+  /addMoment:
+    # binds a127 app logic to a route
+    x-swagger-router-controller: moment_ctrl
+    post:
+      tags: ["Moment Module"]
+      description: add moment
+      # used as the method name of the controller
+      operationId: addMoment
+      consumes:
+        - multipart/form-data
+        - application/x-www-form-urlencoded
+        - binary
+      parameters:
+        - in: formData
+          name: title
+          description: Moment Title
+          type: string
+          required: true
+        - in: formData
+          name: user_id
+          description: user id Moment
+          type: string
+          required: true
+        - in: formData
+          name: tags
+          description: Moment tags
+          type: string
+          required: true
+        - in: formData
+          name: file
+          description: Add Blog Image
+          type: file
+          required: false
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/appResponse"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /getAllMoments:
+    # binds a127 app logic to a route
+    x-swagger-router-controller: moment_ctrl
+    get:
+      tags: ["Moment Module"]
+      description: get All moments
+      # used as the method name of the controller
+      operationId: getAllMoments
+      parameters:
+        - name: limit
+          in: query
+          description: get Moments
+          required: true
+          type: number
+        - name: page
+          in: query
+          description: get current page
+          required: false
+          type: number
+        - name: user_id
+          in: query
+          description: user_id
+          required: true
+          type: string
+      responses:
+        "200":
+          description: Success
+          schema:
+            # a pointer to a definition
+            $ref: "#/definitions/appResponse"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /signup:
+    # binds a127 app logic to a route
+    x-swagger-router-controller: user_ctrl
+    post:
+      tags: ["User Module"]
+      description: signup
+      # used as the method name of the controller
+      operationId: signup
+      parameters:
+        - name: body
+          in: body
+          description: signup
+          schema:
+            $ref: "#/definitions/signup"
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/appResponse"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /login:
+    # binds a127 app logic to a route
+    x-swagger-router-controller: user_ctrl
+    post:
+      tags: ["User Module"]
+      description: compares login data with database and generates token if found
+      # used as the method name of the controller
+      operationId: login
+      parameters:
+        - name: body
+          in: body
+          description: user's login data
+          schema:
+            $ref: "#/definitions/login"
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/appResponse"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /getMomentById:
+    # binds a127 app logic to a route
+    x-swagger-router-controller: moment_ctrl
+    get:
+      tags: ["Moment Module"]
+      description: get moment by Id
+      # used as the method name of the controller
+      operationId: getMomentById
+      parameters:
+        - name: moment_id
+          in: query
+          description: get moment by Id
+          required: true
+          type: string
+      responses:
+        "200":
+          description: Success
+          schema:
+            # a pointer to a definition
+            $ref: "#/definitions/appResponse"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /editMoment:
+    # binds a127 app logic to a route
+    x-swagger-router-controller: moment_ctrl
+    put:
+      tags: ["Moment Module"]
+      description: edit moment
+      # used as the method name of the controller
+      operationId: editMoment
+      consumes:
+        - multipart/form-data
+        - application/x-www-form-urlencoded
+        - binary
+      parameters:
+        - in: formData
+          name: title
+          description: Moment Title
+          type: string
+          required: true
+        - in: formData
+          name: user_id
+          description: user_id Moment
+          type: string
+          required: true
+        - in: formData
+          name: tags
+          description: Moment Tags
+          type: string
+          required: true
+        - in: formData
+          name: moment_id
+          description: Moment Id
+          type: string
+          required: true
+        - in: formData
+          name: file
+          description: Add Moment Image
+          type: file
+          required: false
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/appResponse"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /deleteMoment:
+    # binds a127 app logic to a route
+    x-swagger-router-controller: moment_ctrl
+    delete:
+      tags: ["Moment Module"]
+      description: get moment by Id
+      # used as the method name of the controller
+      operationId: deleteMoment
+      parameters:
+        - name: moment_id
+          in: query
+          description: get moment by Id
+          required: true
+          type: string
+      responses:
+        "200":
+          description: Success
+          schema:
+            # a pointer to a definition
+            $ref: "#/definitions/appResponse"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /getUser:
+    # binds a127 app logic to a route
+    x-swagger-router-controller: user_ctrl
+    get:
+      tags: ["User Module"]
+      description: get user
+      # used as the method name of the controller
+      operationId: getUser
+      parameters:
+        - name: user_id
+          in: query
+          description: get user by Id
+          required: true
+          type: string
+      responses:
+        "200":
+          description: Success
+          schema:
+            # a pointer to a definition
+            $ref: "#/definitions/appResponse"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /swagger:
+    x-swagger-pipe: swagger_raw
+# complex objects have schema definitions
+definitions:
+  appResponse:
+    required:
+      - message
+      - code
+    properties:
+      message:
+        type: string
+      code:
+        type: number
+  ErrorResponse:
+    required:
+      - message
+    properties:
+      message:
+        type: string
+  signup:
+    type: object
+    properties:
+      first_name:
+        type: string
+      last_name:
+        type: string
+      email:
+        type: string
+      password:
+        type: string
+      mobile_no:
+        type: string
+      city:
+        type: string
+  login:
+    type: object
+    properties:
+      email:
+        type: string
+      password:
+        type: string
