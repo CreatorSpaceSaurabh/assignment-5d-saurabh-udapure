@@ -1,0 +1,69 @@
+<div >
+    <div class="addNewPopUp">
+        <div class="login-box-wrapper">
+            <div class="login-box">
+                <h2 class="form-heading align-center addNewText">{{headingText}}</h2>
+                <mat-card>
+                    <mat-card-content>
+                        <form class="form" [formGroup]="addMomentForm">
+
+                            <mat-form-field class="full-width-element full-width">
+                                <mat-label>Title</mat-label>
+                                <span matPrefix>
+                                    <img src="../../assets/images/user.svg" alt=""  height="25" width="25" style="padding: 5px;"/>
+                                </span>
+                                <input  matInput  name="title" placeholder="Enter title" formControlName="title" >
+                                    <mat-error *ngIf="f.title.errors ? f.title.errors.required: ''">Title is required</mat-error>
+                            </mat-form-field>
+
+                            <tag-input matInput name="tags"  formControlName="tags" [(ngModel)]='tagitems'
+                                        (onRemove)="onItemRemoved($event)"
+                                        (onAdd)="onItemAdded($event)"
+                                        >
+                            </tag-input>
+
+                            <!-- <mat-form-field class="full-width-element full-width">
+                                <mat-label>Tags</mat-label>
+                                <span matPrefix>
+                                    <img src="../../assets/images/user.svg" alt=""  height="25" width="25" style="padding: 5px;"/>
+                                </span>
+                                <tag-input matInput name="tags"  formControlName="tags" [(ngModel)]='tagitems'
+                                        (onRemove)="onItemRemoved($event)"
+                                        (onAdd)="onItemAdded($event)"
+                                        (onSelect)="onSelected($event)">
+                                </tag-input>
+                                <input  matInput  name="lastName" placeholder="Enter tags" formControlName="tags" >
+                                <input matInput/>
+                                
+                                    <mat-error *ngIf="f.tags.errors ? f.tags.errors.required: ''">Tags are required</mat-error>
+                            </mat-form-field> -->
+
+                            <div class="full-width-element full-width">
+                                <mat-label>Upload file</mat-label>
+                                <span matPrefix>
+                                    <img src="../../../../assets/images/upload.svg" alt=""  height="25" width="25" style="padding: 5px;"/>
+                                </span>
+                                <input type="file" accept='image/*' name="fileToUpload" placeholder="Upload file"  (change)="onFileSelect($event)">
+                            </div>
+                            <div *ngIf='previewFile'>
+                                <img [src]="previewFile" style="height: 100px; width: 100px;"/>
+                            </div>
+                            <!-- <mat-form-field class="full-width-element full-width">
+                                <mat-label>Upload file</mat-label>
+                                <span *ngIf='previewFile' matPrefix>
+                                    <img src="../../../../assets/images/upload.svg" alt=""  height="25" width="25" style="padding: 5px;"/>
+                                </span>
+                                <input  matInput name="fileToUpload" placeholder="Upload file" formControlName="fileToUpload" maxlength="12">
+                            </mat-form-field> -->
+
+                        </form>
+                    </mat-card-content>
+                    <mat-card-actions >
+                        <button mat-raised-button color="secondary" class="cancelBtn" (click)="closeModal()">Cancel</button>
+                        <button mat-raised-button color="primary" class="addBtn" [disabled]="addMomentForm.invalid" (click)="btnText=='Submit'? onSubmit() : onUpdate()">{{btnText}} </button>
+                     </mat-card-actions>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>

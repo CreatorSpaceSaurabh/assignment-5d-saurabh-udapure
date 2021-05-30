@@ -1,0 +1,65 @@
+<div class="into-section">
+    <h2 class="heading"><b>Moments</b></h2>
+    <button mat-raised-button color="primary" class="loginBtn" (click)="addMoment()">Add moment</button>
+</div>
+
+<div class="table-wrapper p-b-0">
+    <div *ngIf="momentList && !momentList.length">
+        <h3 >No record found</h3>
+    </div>
+    <div class="dashboard-table-wrapper" *ngIf="momentList && momentList.length">
+        <!-- <div > -->
+        <!-- </div> -->
+        <table mat-table [dataSource]="momentList" class="mat-elevation-z8 dashboard-table">
+    
+            <ng-container matColumnDef="srNo">
+                <th mat-header-cell *matHeaderCellDef> Sr No.&nbsp; </th>
+                <td mat-cell *matCellDef="let element"> <span >{{element.srNo}}</span> </td>
+            </ng-container>
+            
+            <ng-container matColumnDef="image">
+                <th mat-header-cell *matHeaderCellDef> Image </th>
+                <td mat-cell *matCellDef="let element"> <h4 class="patient"> <img src="{{element.imagePath ? element.imagePath : '../../../assets/images/5d-light.svg'  }}" alt='moment_img' height="40px" width="40px"/> </h4><span class="patient-date"></span></td>
+            </ng-container>
+    
+            <ng-container matColumnDef="title">
+                <th mat-header-cell *matHeaderCellDef> Title </th>
+                <td mat-cell *matCellDef="let element"> <span class="alerts">{{element.title}}</span> </td>
+            </ng-container>
+
+            <ng-container matColumnDef="tags">
+                <th mat-header-cell *matHeaderCellDef> Tags </th>
+                <td mat-cell *matCellDef="let element"> <span class="alerts">{{element.tagStr ? element.tagStr : ''}}</span> </td>
+            </ng-container>
+            
+            <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef> Action </th>
+                <td mat-cell *matCellDef="let element">
+                    <button mat-button (click)="editMoment(element)">
+                        <img src="../../../assets/images/edit.svg" alt='pencil' />
+                    </button>
+                    <button mat-button (click)="deleteMoment(element)">
+                        <img src="../../../assets/images/delete.svg" alt='trash' />
+                    </button>
+                </td>
+            </ng-container>
+
+            <!-- <ng-container matColumnDef="delete">
+                <th mat-header-cell *matHeaderCellDef>&nbsp;</th>
+                <td mat-cell *matCellDef="let element">
+                    <button mat-button class="btn-delete">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
+                            <image id="cancel_copy" data-name="cancel copy" width="16" height="16" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABHNCSVQICAgIfAhkiAAAAQNJREFUOE+t07ErxVEYxvHPHQ0GZbEoymLxJ6hrlFLKoBSDhdFoNsrEYqCUQSklI+VPYLAog8WiKIORnjpHv65ruK6znec9z/d9z3ve0/JzTWINMxgt4Sdc4QD3TUursRnADuaxhws8lPgE5rCBc2ziI7EKiPkSr1jBe5fKIg3iCEOYDaQC9ou4hM9fzFWO56QkW88md75GykzmVTzipgM0jXEclkpyvXYAu3jBdjHk4BkWCzhyG6dYaIC3MBzAHZZx28hYDYFkxdwERpvCcQBvGKld7QKJ1GmOlsY//wug7yv03cRennGsDFIG6vsZ05C+Bql2tK9RrpA/f6bm1Pb0nb8ASCtVB/4dOr0AAAAASUVORK5CYII="/>
+                          </svg>
+                    </button>
+                </td>
+            </ng-container> -->
+    
+            <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
+        </table>
+    </div>
+</div>
+
+
+

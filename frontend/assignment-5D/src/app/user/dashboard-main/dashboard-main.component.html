@@ -1,0 +1,83 @@
+<!-- main wrapper starts -->
+<main class="main">
+    <div class="wrapper" [ngClass]="{'toggled': istoggled}">
+        <div class="dashboard-wrapper">
+            <div class="dashboard-menu">
+                <h3 class="dashboard-sidebar-logo">
+                    <span class="close-btn" (click)="toggleMenu()">x</span>
+                    <img src="./../../../assets/images/5d-light.svg" alt="" />
+                </h3>
+                
+                <div class="user-box">
+                    <h4 class="username">Profile</h4>
+                </div>
+                <ul class="dashboard-links">
+                    <li >
+                        <a  style="padding-left: -30px;">
+                            Moments
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a>
+                            Moment List
+                        </a>
+                    </li>
+                    <!-- <li>
+                        <a>
+                            Add New Moments
+                        </a>
+                    </li> -->
+                </ul>
+            </div>
+            <div class="dashboard">
+                <div class="dashboard-header">
+                    <div class="menu-toggle">
+                        <button mat-button class="toggle-btn" (click)="toggleMenu()">
+                            <span class="toggle-btn-line"></span>
+                            <span class="toggle-btn-line"></span>
+                            <span class="toggle-btn-line"></span>
+                        </button>
+                    </div>
+                    <div class="header-menu">
+                        <div class="header-menu-left">
+                        </div>
+                        <div class="header-menu-right" [ngClass]="{'active' : istoggledRight}">
+                            <button mat-icon-button class="resonsive-menu-toggle" (click)="toggleRightMenu()">
+                                <mat-icon>more_vert</mat-icon>
+                            </button>
+                            <div class="user-options">
+                                <ul class="user-options-list">
+                                    <li>
+                                        <div class="user-menu">
+                                            <button mat-button [matMenuTriggerFor]="menu">
+                                                <span class="user-dp">
+                                                    <img src="./../../../assets/images/user.png" alt="Melanie Smith" />
+                                                </span>
+                                                <h5 class="user-name" *ngIf="userDetails">{{userDetails && userDetails.first_name && userDetails.last_name ? userDetails.first_name + ' ' + userDetails.last_name : 'User'}}</h5>
+                                                <img src="../../../assets/images/arrow-down-sign-to-navigate 1.svg" alt="arrow" />
+                                            </button>
+                                            <mat-menu #menu="matMenu" xPosition="before">
+                                                <button mat-menu-item (click)="logout()">Logout</button>
+                                            </mat-menu>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="dashboard-content">
+                    <div class="inner-container">
+                        <div class="round-wrapper">
+                            <router-outlet></router-outlet>
+                        </div>
+                    </div>
+                </div>
+                <div class="dashboard-footer">
+                    <p>© Copyright 2021. 5D Solutions by Saurabh Udapure. All Rights Reserved.</p>                    
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<!-- main wrapper ends -->

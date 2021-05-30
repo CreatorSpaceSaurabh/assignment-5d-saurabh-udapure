@@ -1,0 +1,52 @@
+.loginBtn {
+  //   position: relative;
+  width: 184px;
+  height: 50px;
+  //   left: 210px;
+  float: right;
+  //   top: 608px;
+  background: #001b30;
+  border-radius: 25px;
+  z-index: 111;
+  text-decoration: none;
+}
+
+// ****** Add new moment  ********
+.addNewPopUp {
+  height: 500px;
+}
+
+.addBtn {
+  width: 184px;
+  height: 50px;
+  float: right;
+  background: #001b30;
+  border-radius: 25px;
+  margin-top: 70px !important;
+  bottom: 0 !important;
+  z-index: 111;
+  text-decoration: none;
+}
+
+.addNewText {
+  font-family: Maven Pro;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 23px;
+  /* identical to box height */
+
+  color: #001b30;
+}
+
+.cancelBtn {
+  width: 184px;
+  height: 50px;
+  float: right;
+  // background: #001b30;
+  border-radius: 25px;
+  margin-top: 70px !important;
+  bottom: 0 !important;
+  z-index: 111;
+  text-decoration: none;
+}

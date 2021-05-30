@@ -1,0 +1,58 @@
+<div class="login">
+    <!-- <div class="login-left">
+        <div class="intro-heading">
+            <h4>Welcome to</h4>
+            <h1 aria-label="Outhiink Medical">
+                <img src="../../assets/site-logo.png" alt="Outhiink Medical" />
+            </h1>
+        </div>
+    </div> -->
+    <div class="login-right">
+        <div class="login-box-wrapper">
+            <div class="login-box">
+                <mat-card>
+                    <div class="signInLogoBg">
+                        <div class="text-center">
+                            <img src="../../assets/images/5D-logo.png" alt="5D Solutions" />
+                        </div>
+                    </div>
+                    <h2 class="form-heading align-center signInText">SIGN IN</h2>
+                    <h5 class="subHead text-center">To start using the app</h5>
+                    <mat-card-content>
+                        <form class="form" [formGroup]="loginForm">
+                            
+                            <mat-form-field class="full-width-element full-width">
+                                <mat-label>Enter email id</mat-label>
+                                <span matPrefix>
+                                    <img src="../../assets/images/emailvector.svg" alt=""  height="25" width="25" style="padding: 5px;"/>
+                                </span>
+                                <input  matInput  name="email" placeholder="ministry@gov.in" formControlName="email" >
+                                    <mat-error *ngIf="f.email.errors ? f.email.errors.required: ''">Email is required</mat-error>
+                                    <mat-error *ngIf="f.email.errors ? f.email.errors.pattern: ''">Email must be a valid email address</mat-error>
+                            </mat-form-field>
+                            <mat-form-field class="full-width-element full-width">
+                                <span matPrefix>
+                                    <img src="../../assets/images/passvector.svg" alt="" height="25" width="25" style="padding: 5px;"/>
+                                </span>
+                                <mat-label>Password</mat-label>
+                                <input  matInput  name="password" [type]="passwordType" placeholder="Password" formControlName="password">
+                                <span class="passIcon">
+                                    <i class="fa fa-eye-slash" aria-hidden="true" *ngIf='showPass' (click)="showHidePass('hide')">Hide</i>
+                                    <i class="fa fa-eye" aria-hidden="true" *ngIf='!showPass' (click)="showHidePass('show')">Show</i>
+                                </span>
+                                
+                                    <mat-error *ngIf="f.password.errors ? f.password.errors.required: ''">Password is required</mat-error>
+                                    <mat-error *ngIf="f.password.errors ? f.password.errors.minlength: ''">Password must be at least 6 characters</mat-error>
+                            </mat-form-field>
+                        </form>
+                    </mat-card-content>
+                    <mat-card-actions >
+                        <button mat-raised-button color="primary" class="loginBtn" [disabled]="loginForm.invalid" (click)="onSubmit()">SIGN IN</button>
+                        <!-- &#8594; -->
+                     </mat-card-actions>
+                </mat-card>
+                <p class="extra-text align-center">Not a member? <a routerLink="/signup" class="link">Sign Up</a> </p>
+            </div>
+        </div>
+    </div>
+</div>

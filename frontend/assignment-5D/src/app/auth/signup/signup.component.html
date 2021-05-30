@@ -1,0 +1,88 @@
+<div class="login">
+    <div class="login-right">
+        <div class="login-box-wrapper">
+            <div class="login-box">
+                <mat-card>
+                    <div class="signInLogoBg">
+                        <div class="text-center">
+                            <img src="../../assets/images/5D-logo.png" alt="5D Solutions" />
+                        </div>
+                    </div>
+                    <h2 class="form-heading align-center signInText">SIGN UP</h2>
+                    <h5 class="subHead text-center">To be a member</h5>
+                    <mat-card-content>
+                        <form class="form" [formGroup]="signupForm">
+
+                            <mat-form-field class="full-width-element full-width">
+                                <mat-label>First Name</mat-label>
+                                <span matPrefix>
+                                    <img src="../../assets/images/user.svg" alt=""  height="25" width="25" style="padding: 5px;"/>
+                                    <!-- <i class="fa fa-user"></i> -->
+                                </span>
+                                <input  matInput  name="firstName" placeholder="Robert" formControlName="first_name" >
+                                    <mat-error *ngIf="f.first_name.errors ? f.first_name.errors.required: ''">FirstName is required</mat-error>
+                            </mat-form-field>
+
+                            <mat-form-field class="full-width-element full-width">
+                                <mat-label>Last Name</mat-label>
+                                <span matPrefix>
+                                    <img src="../../assets/images/user.svg" alt=""  height="25" width="25" style="padding: 5px;"/>
+                                    <!-- <i class="fa fa-user"></i> -->
+                                </span>
+                                <input  matInput  name="lastName" placeholder="Downey Jr." formControlName="last_name" >
+                                    <mat-error *ngIf="f.last_name.errors ? f.last_name.errors.required: ''">lastName is required</mat-error>
+                            </mat-form-field>
+
+                            <mat-form-field class="full-width-element full-width">
+                                <mat-label>Mobile No.</mat-label>
+                                <span matPrefix>
+                                    <!-- <img src="../../assets/images/emailvector.svg" alt=""  height="25" width="25" style="padding: 5px;"/> -->
+                                    <i class="fa fa-phone"></i>
+                                </span>
+                                <input  matInput  name="phone" placeholder="9633334456" formControlName="phone" maxlength="12">
+                                    <mat-error *ngIf="f.phone.errors ? f.phone.errors.required: ''">Mobile no. is required</mat-error>
+                                    <mat-error *ngIf="f.phone.errors ? f.phone.errors.pattern: ''">Mobile no. must be a valid </mat-error>
+                                    <mat-error *ngIf="f.phone.errors ? f.phone.errors.maxLength: ''">Mobile no. must be of 10 number </mat-error>
+                            </mat-form-field>
+
+                            <mat-form-field class="full-width-element full-width">
+                                <mat-label>Enter email id</mat-label>
+                                <span matPrefix>
+                                    <img src="../../assets/images/emailvector.svg" alt=""  height="25" width="25" style="padding: 5px;"/>
+                                </span>
+                                <input  matInput  name="email" placeholder="rdj@gmail.com" formControlName="email" >
+                                    <mat-error *ngIf="f.email.errors ? f.email.errors.required: ''">Email is required</mat-error>
+                                    <mat-error *ngIf="f.email.errors ? f.email.errors.pattern: ''">Email must be a valid email address</mat-error>
+                            </mat-form-field>
+
+                            <mat-form-field class="full-width-element full-width">
+                                <mat-label>City</mat-label>
+                                <input  matInput  name="city" placeholder="Pune" formControlName="city" >
+                                    <mat-error *ngIf="f.city.errors ? f.city.errors.required: ''">City is required</mat-error>
+                            </mat-form-field>
+                            <mat-form-field class="full-width-element full-width">
+                                <span matPrefix>
+                                    <img src="../../assets/images/passvector.svg" alt="" height="25" width="25" style="padding: 5px;"/>
+                                </span>
+                                <mat-label>Password</mat-label>
+                                <input  matInput  name="password" [type]="passwordType" placeholder="Password" formControlName="password">
+                                <span class="passIcon">
+                                    <i class="fa fa-eye-slash" aria-hidden="true" *ngIf='showPass' (click)="showHidePass('hide')">Hide</i>
+                                    <i class="fa fa-eye" aria-hidden="true" *ngIf='!showPass' (click)="showHidePass('show')">Show</i>
+                                </span>
+                                
+                                    <mat-error *ngIf="f.password.errors ? f.password.errors.required: ''">Password is required</mat-error>
+                                    <mat-error *ngIf="f.password.errors ? f.password.errors.minlength: ''">Password must be at least 6 characters</mat-error>
+                            </mat-form-field>
+                        </form>
+                    </mat-card-content>
+                    <mat-card-actions >
+                        <button mat-raised-button color="primary" class="loginBtn" [disabled]="signupForm.invalid" (click)="onSubmit()">Submit </button>
+                        <!-- &#8594; -->
+                     </mat-card-actions>
+                </mat-card>
+                <p class="extra-text align-center">Already a member? <a routerLink="/login" class="link">Sign In</a> </p>
+            </div>
+        </div>
+    </div>
+</div>
